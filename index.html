@@ -3,17 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sug‘urta calculator</title>
+    <title>D.S.AbduqodirSug‘urta calculator</title>
 </head>
 <body>
     <div class="main">
         <h1>Sug‘urta calculator</h1>
         <input type="text" id="summa" placeholder="Summa">
-        <input type="text" id="month" placeholder="Muddat">
-        <input type="text" placeholder="1.25" value="1.25">
+        <select name="month" id="month">
+            <option value="12">12 oy</option>
+            <option value="18">18 oy</option>
+            <option value="24">24 oy</option>
+            <option value="36">36 oy</option>
+            <option value="48">48 oy</option>
+        </select>
+        <input type="text" id="rate" placeholder="1.25" value="1.25">
         <button onclick="calculate()">Submit</button>
         <h1>Sug‘urta summasi</h1>
         <span class="res"><span class="result">0</span> so‘m</span>
+        <small>Made by D.S.Abduqodirov</small>
     </div>
     
 </body>
@@ -26,7 +33,7 @@
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     }
     body{
-        background-color: white;
+        background-color: rgb(180, 75, 75);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -57,6 +64,12 @@
         border-radius: 7px;
         font-size: 25px;
     }
+    select{
+        border: 1px solid black;
+        padding: 5px;
+        font-size: 25px;
+        border-radius: 7px;
+    }
 
 </style>
 
@@ -65,6 +78,7 @@
     function calculate(){
         let summa = Number(document.getElementById('summa').value)
         let muddat = Number(document.getElementById('month').value)
+        let rate = Number(document.getElementById('rate').value)
         let result = document.querySelector('.result')
 
         let year = muddat / 12
@@ -72,9 +86,9 @@
         let yillar = [1,2,3,4]
 
         if (muddat===18){
-            result.textContent = (summa*1.25/50)+(summa*1.25/100)
+            result.textContent = ((summa*rate/50)+(summa*rate/100)).toLocaleString('en',{style:'decimal',useGrouping:true}).replace(/,/g,' ')
         } else if (yillar.includes(year)){
-            result.textContent = (summa*1.25/50)*year
+            result.textContent = ((summa*rate/50)*year).toLocaleString('en',{style:'decimal',useGrouping:true}).replace(/,/g,' ')
         } else {
             result.textContent = 'Error';
         }
