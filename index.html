@@ -3,27 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lisa Sug‘urta calculatori</title>
+    <title>Lisa kredit yordamchisi</title>
 </head>
 <body>
-    <div class="main">
-        <h1>Lisa Sug‘urta calculatori</h1>
-        <small>1.0 v</small>
-        <input type="text" id="summa" placeholder="Summa">
-        <select name="month" id="month">
-            <option value="12">12 oy</option>
-            <option value="18">18 oy</option>
-            <option value="24">24 oy</option>
-            <option value="36">36 oy</option>
-            <option value="48">48 oy</option>
-        </select>
-        <input type="text" id="rate" placeholder="1.25" value="1.25">
-        <button onclick="calculate()">Submit</button>
-        <h1>Sug‘urta summasi</h1>
-        <span class="res"><span class="result">0</span> so‘m</span>
-        <small>Made by <a href="https://t.me/mrdili131" style="text-decoration:none;color:black;font-weight:bold;">D.S.Abduqodirov</a></small>
-        <small>© DIZENSTUDIOS 2025</small>
+    <nav style="padding: 20px;font-size: 30px;"><h1 style="color: white;">Lisa kredit yordamchisi</h1></nav>
+    <div class="main-container">
+
+        <div class="main">
+            <h1>Sug‘urta calculatori</h1>
+            <small>1.0 v</small>
+            <label for="summa">Summa</label>
+            <input type="text" id="summa" name="summa" placeholder="Summa">
+            <label for="month">Muddat</label>
+            <select name="month" id="month">
+                <option value="12">12 oy</option>
+                <option value="18">18 oy</option>
+                <option value="24">24 oy</option>
+                <option value="36">36 oy</option>
+                <option value="48">48 oy</option>
+            </select>
+            <label for="rate">Foiz stavkasi</label>
+            <select name="rate" id="rate">
+                <option value="56">56%</option>
+                <option value="58">58%</option>
+            </select>
+            <label for="ins_rate">Sug‘urta foizi</label>
+            <input type="text" id="ins_rate" name="ins_rate" placeholder="1.25" value="1.25">
+            <button onclick="calculate()">Submit</button>
+            <h1>Sug‘urta summasi</h1>
+            <span class="res"><span class="result">0</span> so‘m</span>
+            <small>Made by <a href="https://t.me/mrdili131" style="text-decoration:none;color:black;font-weight:bold;">D.S.Abduqodirov</a></small>
+            <small>© DIZENSTUDIOS 2025</small>
+        </div>
+
+
+        <div class="main" id="graph">
+            <table>
+                <h1>To‘lov grafiki</h1>
+                <thead>
+                    <tr>
+                        <th>Oylar</th>
+                        <th>Hissoblangan foizlar</th>
+                        <th>Qaytariladigan asosiy qarz summasi</th>
+                        <th>Bir oylik to‘lov</th>
+                        <th>Qoldiq qarz summasi</th>
+                    </tr>
+                </thead>
+                <tbody id="pay_cell">
+
+                </tbody>
+            </table>
+        </div>
+        
+
     </div>
+    
     
 </body>
 </html>
@@ -36,10 +70,18 @@
     }
     body{
         background-color: rgb(180, 75, 75);
+        
+    }
+    .main-container{
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
         justify-content: center;
         align-items: center;
+        background-color: rgb(209, 90, 90);
+        border-radius: 12px;
+        padding: 20px;
     }
     .main{
         background-color: antiquewhite;
@@ -49,7 +91,7 @@
         flex-direction: column;
         gap: 10px;
         justify-content: center;
-        margin-top: 100px;
+        margin-top: 50px;
         box-shadow: 3px 3px 0 0 black;
     }
     button{
@@ -72,15 +114,33 @@
         font-size: 25px;
         border-radius: 7px;
     }
+    th,td{
+        border: 1px solid black;
+        padding: 10px;
+        font-size: 17px;
+    }
+    .result-table{
+        border: 3px solid rgb(0, 114, 0);
+        font-size: 20px;
+        font-weight: bold;
+        color: rgb(0, 0, 0);
+    }
+    label{
+        font-weight: bold;
+    }
 
 </style>
 
 
 <script>
+
+    function numify(n){
+        return Math.round(Number(n)).toLocaleString('en',{style:'decimal',useGrouping:true}).replace(/,/g,' ')
+    }
     function calculate(){
         let summa = Number(document.getElementById('summa').value)
         let muddat = Number(document.getElementById('month').value)
-        let rate = Number(document.getElementById('rate').value)
+        let ins_rate = Number(document.getElementById('ins_rate').value)
         let result = document.querySelector('.result')
 
         let year = muddat / 12
@@ -88,11 +148,54 @@
         let yillar = [1,2,3,4]
 
         if (muddat===18){
-            result.textContent = ((summa*rate/50)+(summa*rate/100)).toLocaleString('en',{style:'decimal',useGrouping:true}).replace(/,/g,' ')
+            result.textContent = ((summa*ins_rate/50)+(summa*ins_rate/100)).toLocaleString('en',{style:'decimal',useGrouping:true}).replace(/,/g,' ')
         } else if (yillar.includes(year)){
-            result.textContent = ((summa*rate/50)*year).toLocaleString('en',{style:'decimal',useGrouping:true}).replace(/,/g,' ')
+            result.textContent = ((summa*ins_rate/50)*year).toLocaleString('en',{style:'decimal',useGrouping:true}).replace(/,/g,' ')
         } else {
             result.textContent = 'Error';
         }
-    }
+
+
+
+
+        let pay_cell = document.getElementById('pay_cell')
+        let rate = document.getElementById('rate').value
+        let rr = rate/12
+        let amount_monthly = summa/muddat
+        let new_amount = summa;
+        
+        let total_amount = 0
+        let total_interest = 0
+
+        pay_cell.innerHTML = ''
+        for (let i=1;i<muddat+1;i++){
+            let monthly_interest = (new_amount/100*rr)
+            let monthly_payment = (monthly_interest+amount_monthly)
+
+
+            total_amount += monthly_payment
+            total_interest += monthly_interest
+            new_amount-= amount_monthly
+            pay_cell.innerHTML += `
+                <tr>
+                    <td>${i}</td>
+                    <td>${numify(monthly_interest)}</td>
+                    <td>${numify(amount_monthly)}</td>
+                    <td>${numify(monthly_payment)}</td>
+                    <td>${numify(new_amount)}</td>
+                </tr>
+            `
+        }
+        
+        pay_cell.innerHTML += `
+                <tr>
+                    <td class="result-table"></td>
+                    <td class="result-table">${numify(total_interest)}</td>
+                    <td class="result-table">0</td>
+                    <td class="result-table">${numify(total_amount)}</td>
+                    <td class="result-table">${numify(new_amount)}</td>
+                </tr>
+            `
+        }
+
 </script>
