@@ -128,6 +128,9 @@
     label{
         font-weight: bold;
     }
+    #graph{
+        display: none;
+    }
 
 </style>
 
@@ -159,6 +162,7 @@
 
 
         let pay_cell = document.getElementById('pay_cell')
+        document.getElementById('graph').style.display = 'block'
         let rate = document.getElementById('rate').value
         let rr = rate/12
         let amount_monthly = summa/muddat
