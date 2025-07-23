@@ -6,12 +6,13 @@
     <title>Lisa kredit yordamchisi</title>
 </head>
 <body>
-    <nav style="padding: 20px;font-size: 30px;"><h1 style="color: white;">Lisa kredit yordamchisi</h1></nav>
+    <nav style="padding: 20px;font-size: 30px;"><h1 style="color: rgb(0, 0, 0);background-color: rgba(0, 0, 0, 0.096);width: fit-content;padding: 5px;border-radius: 12px;;">Lisa kredit yordamchisi</h1></nav>
     <div class="main-container">
 
         <div class="main">
             <h1>Sug‘urta calculatori</h1>
             <small>1.0 v</small>
+            <small style="font-weight: bold;">Faqat IMKONIYAT va PENSIYA uchun</small>
             <label for="summa">Summa</label>
             <input type="text" id="summa" name="summa" placeholder="Summa">
             <label for="month">Muddat</label>
@@ -32,7 +33,7 @@
             <button onclick="calculate()">Submit</button>
             <h1>Sug‘urta summasi</h1>
             <span class="res"><span class="result">0</span> so‘m</span>
-            <small>Made by <a href="https://t.me/mrdili131" style="text-decoration:none;color:black;font-weight:bold;">D.S.Abduqodirov</a></small>
+            <small>Made by <a href="https://t.me/mrdili131" style="text-decoration:none;color:rgb(255, 255, 255);font-weight:bold;">D.S.Abduqodirov</a></small>
             <small>© DIZENSTUDIOS 2025</small>
         </div>
 
@@ -70,9 +71,10 @@
     }
     body{
         background-color: rgb(180, 75, 75);
-        
+        background-image: url(wall.jpg);
     }
     .main-container{
+        color: white;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -82,9 +84,10 @@
         background-color: rgb(209, 90, 90);
         border-radius: 12px;
         padding: 20px;
+        background-image: url(back.jpg);
     }
     .main{
-        background-color: antiquewhite;
+        background-color: rgba(247, 229, 207, 0.02);
         padding: 20px;
         border-radius: 12px;
         display: flex;
@@ -92,7 +95,10 @@
         gap: 10px;
         justify-content: center;
         margin-top: 50px;
-        box-shadow: 3px 3px 0 0 black;
+        box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.281);
+        overflow: auto;
+        backdrop-filter: blur(20px);
+        border: 1px solid white;
     }
     button{
         padding: 5px;
@@ -123,13 +129,29 @@
         border: 3px solid rgb(0, 114, 0);
         font-size: 20px;
         font-weight: bold;
-        color: rgb(0, 0, 0);
+        color: white
     }
     label{
         font-weight: bold;
     }
     #graph{
         display: none;
+    }
+    @media (max-width: 576px) {
+        th,td{
+        border: 1px solid black;
+        padding: 15px;
+        font-size: 10px;
+    }
+    .result-table{
+        border: 3px solid rgb(0, 114, 0);
+        font-size: 15px;
+        font-weight: bold;
+        color: rgb(0, 0, 0);
+    }
+    .main-container{
+        overflow:scroll
+    }
     }
 
 </style>
