@@ -179,9 +179,9 @@
         let yillar = [1,2,3,4]
 
         if (muddat===18){
-            result.textContent = ((summa*ins_rate/50)+(summa*ins_rate/100)).toLocaleString('en',{style:'decimal',useGrouping:true}).replace(/,/g,' ')
+            result.textContent = "Sug‘urta to‘lovi yo‘q" /*((summa*ins_rate/50)+(summa*ins_rate/100)).toLocaleString('en',{style:'decimal',useGrouping:true}).replace(/,/g,' ')*/
         } else if (yillar.includes(year)){
-            result.textContent = ((summa*ins_rate/50)*year).toLocaleString('en',{style:'decimal',useGrouping:true}).replace(/,/g,' ')
+            result.textContent = "Sug‘urta to‘lovi yo‘q" /*((summa*ins_rate/50)*year).toLocaleString('en',{style:'decimal',useGrouping:true}).replace(/,/g,' ')/*
         } else {
             result.textContent = 'Error';
         }
@@ -231,4 +231,5 @@
         }
 
 </script>
+
 
