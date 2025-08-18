@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DarmonUZ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+        <h2 id="alert"></h2>
+    <nav>
+        <a href="main.html" class="nav-items"><span class="material-symbols-outlined">home</span></a>
+        <a href="" class="nav-items"><span class="material-symbols-outlined">inactive_order</span></a>
+        <a href="" class="nav-items"><span class="material-symbols-outlined">settings</span></a>
+    </nav>
+    <div class="search-section">
+        <h1 class="label">DarmonUZ</h1>
+        <input type="search" placeholder="parasetamol">
+        <button>Qidirish</button>
+    </div>
+    <div class="main-container">
+        <div class="product-item">
+            <h2><a href="detail.html">TRIMOL 200mg</a></h2>
+            <h2><a href="detail.html">10.000so'm</a></h2>
+            <div style="display: flex;flex-direction: row;gap: 5px;">
+                <div style="display: flex;flex-direction: column;gap:10px;justify-content: center;align-items: center;">
+                    <input id="field" type="number" value="0" max="100" min="0" class="quantity-input">
+                    <div style="display: flex;flex-direction: row;gap:10px;">
+                        <select name="" id="">
+                            <option value="">Dona</option>
+                            <option value="">Kaseta</option>
+                            <option value="">Liter</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="display: flex;flex-direction: column;gap:2px;">
+                    <button onclick="add(this)" class="quantity-btn"><span class="material-symbols-outlined">add_circle</span></button>
+                    <button onclick="dec(this)" class="quantity-btn"><span class="material-symbols-outlined">do_not_disturb_on</span></button>
+                </div>
+                <button class="quantity-btn"><span class="material-symbols-outlined">add_shopping_cart</span></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<script>
+    function add(el){
+        let field = document.getElementById("field");
+        field.value = Number(field.value) + 1;
+        let alerter = document.getElementById("alert")
+        alerter.textContent = "Savatga qo‘shildi"
+        alerter.style.display = "flex";
+        setTimeout(()=>{
+            alerter.style.display = "none";
+        }, 3000)
+    }
+    function dec(el){
+        let field = document.getElementById("field");
+        if (field.value > 0){
+            field.value = Number(field.value) - 1;
+            let alerter = document.getElementById("alert")
+            alerter.textContent = "Savatdan olib tashlandi"
+            alerter.style.display = "flex";
+            setTimeout(()=>{
+                alerter.style.display = "none";
+            }, 3000)
+        }
+    }
+</script>
+
+<style>
+    *{
+        padding:0;
+        margin:0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body{
+        background-image: url('https://avatars.mds.yandex.net/i?id=529f5cae40c8405931f453f21edd26c5_l-5245755-images-thumbs&n=13');
+    }
+    nav{
+        background-color: rgba(115, 115, 255, 0.89);
+        padding:20px;
+        font-size: 25px;
+        display:flex;
+        flex-direction:row;
+        justify-content:space-around;
+        font-weight: 500;
+        border-bottom: 4px solid rgb(255, 0, 0);
+    }
+    .nav-items{
+        text-decoration:none;
+        color:white;
+        font-size: 25px;
+    }
+    .search-section{
+        display: flex;
+        flex-direction: row;
+        gap:20px;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+    }
+    .search-section input{
+        border-radius: 12px;
+        font-size: 20px;
+        padding: 5px;
+        width: 40%;
+    }
+    .search-section button{
+        font-size: 25px;
+    }
+    .main-container{
+        display: flex;
+        flex-direction: column;
+        gap:20px;
+        padding: 10px;
+    }
+    .product-item{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        border-radius: 12px;
+        gap:10px;
+        padding: 10px;
+        border:2px solid rgb(0, 0, 0);
+        box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.63);
+        background-color: rgba(0, 0, 0, 0.466);
+        align-items: center;
+        color:white;
+    }
+    .product-item:hover{
+        box-shadow: 0 0 0 0;
+        background-color: rgba(0, 0, 0, 0.534);
+    }
+    .product-item img{
+        height: 100px;
+        width: 150px;
+    }
+    .quantity-input{
+        font-size: 25px;
+        width: 50px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid red;
+        border-radius: 13px;
+        padding: 5px;
+    }
+    .quantity-btn{
+        font-size: 30px;
+        padding: 2px;
+        background-color: trans;
+        color: black;
+        border:0;
+        border-radius: 12px;;
+    }
+    a{
+        text-decoration: none;
+        color: white;
+    }
+    #alert{
+        display: none;
+        z-index: 1000;
+        position: fixed;
+        width: 300px;
+        border-radius: 12px;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(131, 243, 116);
+        border:2px solid rgb(124, 202, 114);
+        color: rgb(0, 0, 0);
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    .label{
+        display: none;
+    }
+    @media screen and (max-width:500px){
+        nav{
+            bottom:0;
+            position: fixed;
+            left:0;
+            z-index: 1000;
+            width: 100vw;
+            border-bottom: 0;
+            border-top: 4px solid red;
+        }
+        .label{
+            display: block;
+        }
+        .search-section{
+            background-color: white;
+            padding: 10px;
+        }
+        .search-section input{
+            background-color: rgb(247, 247, 247);
+        }
+    }
+</style>
