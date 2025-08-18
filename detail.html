@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DarmonUZ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+        <h2 id="alert"></h2>
+    <nav>
+        <a href="main.html" class="nav-items"><span class="material-symbols-outlined">home</span></a>
+        <a href="" class="nav-items"><span class="material-symbols-outlined">inactive_order</span></a>
+        <a href="" class="nav-items"><span class="material-symbols-outlined">settings</span></a>
+    </nav>
+    <div class="search-section">
+        <h1 class="label">DarmonUZ</h1>
+        <input type="search" placeholder="parasetamol">
+        <button>Qidirish</button>
+    </div>
+    <div class="main-container">
+        <div class="product-view">
+            <a href="main.html" class="back-btn"><span class="material-symbols-outlined">arrow_back</span></a>
+            <img src="https://www.norma.uz/img/d9/c3/363dded942b26c538b97d4fd1d2f.jpg" height="250" alt="">
+            <h1>Parasetamol 250MG</h1>
+            <h3>Narxi: 150 ming so‘m</h3>
+            <h3>Dorixona: Zeleniy apteka (FLAGMAN FILIALI)</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque molestias recusandae
+                 porro, repellendus quo odit magni. Fugit optio ea fuga qui temporibus 
+                 eum molestias quae incidunt, maxime, sunt, accusamus dolore.</p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+<style>
+    *{
+        padding:0;
+        margin:0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body{
+        background-image: url('https://avatars.mds.yandex.net/i?id=529f5cae40c8405931f453f21edd26c5_l-5245755-images-thumbs&n=13');
+    }
+    nav{
+        background-color: rgba(115, 115, 255, 0.89);
+        padding:20px;
+        font-size: 25px;
+        display:flex;
+        flex-direction:row;
+        justify-content:space-around;
+        font-weight: 500;
+        border-bottom: 4px solid rgb(255, 0, 0);
+    }
+    .nav-items{
+        text-decoration:none;
+        color:white;
+        font-size: 25px;
+    }
+    .search-section{
+        display: flex;
+        flex-direction: row;
+        gap:20px;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+    }
+    .search-section input{
+        border-radius: 12px;
+        font-size: 20px;
+        padding: 5px;
+        width: 40%;
+    }
+    .search-section button{
+        font-size: 25px;
+    }
+    .main-container{
+        display: flex;
+        flex-direction: column;
+        gap:20px;
+        padding: 10px;
+    }
+    .product-view{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 5px;
+            border: 6px solid rgb(226, 226, 226);
+            border-radius: 12px;
+            background-color: rgba(192, 192, 192, 0.445);
+        }
+    .product-view img{
+        border: 1px solid black;
+    }
+    .back-btn{
+        top:20px;
+        left:20px;
+        border-radius: 5px;
+        border:1px solid rgb(190, 190, 190);
+        background-color: white;
+    }
+    #alert{
+        display: none;
+        z-index: 1000;
+        position: fixed;
+        width: 300px;
+        border-radius: 12px;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(131, 243, 116);
+        border:2px solid rgb(124, 202, 114);
+        color: rgb(0, 0, 0);
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    .label{
+        display: none;
+    }
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    @media screen and (max-width:600px){
+        nav{
+            bottom:0;
+            position: fixed;
+            left:0;
+            z-index: 1000;
+            width: 100vw;
+            border-bottom: 0;
+            border-top: 4px solid red;
+        }
+        .main-container{
+            display: flex;
+            flex-direction: column;
+            gap:20px;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+        .product-view{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 5px;
+            border: 6px solid rgb(226, 226, 226);
+            border-radius: 12px;
+        }
+        .label{
+            display: block;
+        }
+        .search-section{
+            background-color: white;
+            padding: 10px;
+        }
+        .search-section input{
+            background-color: rgb(247, 247, 247);
+        }
+    }
+</style>
