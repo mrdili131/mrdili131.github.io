@@ -113,9 +113,14 @@
         color: white;
         user-select: none;
     }
+    html, body{
+        overscroll-behavior: none;
+    }
     body{
         background-color: black;
         padding-bottom: 100px;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
     }
     nav{
         display: flex;
@@ -144,6 +149,7 @@
     }
     .main-container{
         padding: 10px;
+        -webkit-overflow-scrolling: touch;
     }
     .contents{
         display: flex;
