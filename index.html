@@ -15,12 +15,21 @@
         <a href="" class="nav-item">Category</a>
     </nav>
     <div class="main-container">
+ 
+        <div class="content">
+            <div class="posting-holder">
+                <textarea class="input-text" type="text" placeholder="What are you feeling"></textarea>
+                <input class="input-image" type="image">
+                <button id="post">Post</button>
+            </div>
+        </div>
+ 
         <div class="contents">
  
             <div class="content">
                 <div class="profile-info">
                     <div class="user-image">
-                        <img src="https://picsum.photos/200" alt="">
+                        <img src="https://picsum.photos/197" alt="">
                     </div>
                     <code>@mrdili131</code>
                     <small>10 hours ago</small>
@@ -56,9 +65,9 @@
             <div class="content">
                 <div class="profile-info">
                     <div class="user-image">
-                        <img src="https://picsum.photos/200" style="border-radius: 100%;" alt="">
+                        <img src="https://picsum.photos/198" style="border-radius: 100%;" alt="">
                     </div>
-                    <code>@mrdili131</code>
+                    <code>@dizenstudios</code>
                     <small>10 hours ago</small>
                 </div>
                 <div class="text-content">
@@ -77,16 +86,16 @@
             <div class="suggested-users">
                 <div class="suggested-user">
                     <div class="suggested-user-image">
-                        <img src="https://picsum.photos/200" alt="">
+                        <img src="https://picsum.photos/201" alt="">
                     </div>
-                    <h3>@mrdili131</h3>
+                    <h3>@yoptagraph</h3>
                 </div>
  
                 <div class="suggested-user">
                     <div class="suggested-user-image">
-                        <img src="https://picsum.photos/200" alt="">
+                        <img src="https://picsum.photos/202" alt="">
                     </div>
-                    <h3>@mrdili131</h3>
+                    <h3>@ivangroz</h3>
                 </div>
             </div>
  
@@ -164,6 +173,12 @@
         overflow: hidden;
         width: 90%;
         border-bottom: 1px solid rgb(52, 52, 52);;
+    }
+    .posting-holder{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around
     }
     .profile-info{
         display: flex;
@@ -280,6 +295,20 @@
     button:active{
         background-color: rgb(195, 195, 195);
     }
+    .input-text{
+        width: 60%;
+        padding: 3px;
+        border-radius: 12px;
+        font-size: 20px;
+        border: 0;
+        color: black;
+    }
+    .input-image{
+        padding: 5px;
+        font-size: 20px;
+        border-radius: 13px;
+        border: 0;
+    }
  
  
  
@@ -331,9 +360,41 @@
 </style>
  
 <script>
-    window.addEventListener('scroll',()=>{
-        if (window.scrollY === -15){
-            location.reload()
+    // window.addEventListener('scroll',()=>{
+    //     if (window.scrollY === -15){
+    //         location.reload()
+    //     }
+    // })
+ 
+    document.getElementById("post").addEventListener("click",()=>{
+        let text = document.querySelector(".input-text");
+        let contents = document.querySelector(".contents");
+ 
+        if (!text.value == ""){
+            let content = 
+            `
+                <div class="content">
+                    <div class="profile-info">
+                        <div class="user-image">
+                            <img src="https://picsum.photos/200" style="border-radius: 100%;" alt="">
+                        </div>
+                        <code>@anonymous</code>
+                        <small>now</small>
+                    </div>
+                    <div class="text-content">
+                        <h2>${text.value}</h2>
+                    </div>
+                    <div class="actions-holder">
+                        <button>Like 0</button>
+                        <button>Comment 0</button>
+                        <button>Send 0</button>
+                        <button>...</button>
+                    </div>
+                </div>
+            `
+ 
+            contents.innerHTML = content + contents.innerHTML;
+            text.value = "";
         }
     })
 </script>
